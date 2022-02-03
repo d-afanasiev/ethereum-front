@@ -31,6 +31,10 @@
   border-bottom-right-radius: 10px;
 }
 
+.wrapper_table {
+  margin-bottom: 56px;
+}
+
 @media screen and (max-width: 767px) {
   .wrapper_table {
     overflow-x: scroll;

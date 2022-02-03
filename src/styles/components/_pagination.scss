@@ -1,0 +1,22 @@
+#rpb-pagination {
+  & li {
+    width: 48px;
+    height: 48px;
+    margin-right: 6px;
+    margin-bottom: 10px;
+
+    & button {
+      width: inherit;
+      height: inherit;
+
+      &.rpb-item--active {
+        background-color: var(--header-bg-color);
+      }
+    }
+  }
+}
+
+.wrapper__pagination {
+  display: flex;
+  justify-content: center;
+}
