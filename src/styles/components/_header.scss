@@ -1,0 +1,17 @@
+.header {
+  height: 72px;
+  background-color: var(--header-bg-color);
+}
+
+.header__flex {
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+
+.header__link {
+  color: var(--main-color);
+  text-decoration: none;
+  font-size: 40px;
+  line-height: 1.23;
+}
