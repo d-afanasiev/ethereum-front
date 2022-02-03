@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Pagination as Pag } from "react-pagination-bar";
 import { ReactComponent as ArrowNavLeft } from "../../images/arrowNavLeft.svg";
 import { ReactComponent as ArrowNavRight } from "../../images/arrowNavRight.svg";
@@ -19,8 +19,8 @@ import "react-pagination-bar/dist/index.css";
 // ];
 
 export default function Pagination() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pagePostsLimit = 3;
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const pagePostsLimit = 3;
 
   return (
     <div className="wrapper__pagination">
@@ -32,7 +32,7 @@ export default function Pagination() {
       <Pag
         totalItems={500}
         itemsPerPage={4}
-        onPageСhange={(pageNumber) => setCurrentPage(pageNumber)}
+        // onPageСhange={(pageNumber) => setCurrentPage(pageNumber)}
         pageNeighbours={2}
         nextLabel={<ArrowNavRight />}
         prevLabel={<ArrowNavLeft />}

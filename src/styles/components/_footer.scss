@@ -1,0 +1,17 @@
+.footer {
+  min-height: 57px;
+  background-color: var(--footer-bg-color);
+}
+
+.footer__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: inherit;
+}
+
+.footer_text {
+  font-size: 16px;
+  line-height: 1.42;
+  color: var(--main-color);
+}

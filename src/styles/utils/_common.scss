@@ -10,9 +10,7 @@
   --select-color-text: #1a1a1a;
   --button-hover-bg-color: #3489ce;
   --table-row-color: #fbfbfb;
-
-  --animation-dur: 250ms;
-  --animation-type: cubic-bezier(0.4, 0, 0.2, 1);
+  --footer-bg-color: #1c3b55;
 }
 
 body {
@@ -37,7 +35,7 @@ body {
   }
 
   @media screen and (min-width: 768px) {
-    width: 758px;
+    width: 748px;
     padding: 0;
   }
 
