@@ -15,3 +15,15 @@
   line-height: 1.42;
   color: var(--main-color);
 }
+
+@media screen and (max-width: 767px) {
+  .footer__flex {
+    flex-direction: column;
+    & div {
+      margin-top: 10px;
+    }
+  }
+  .logo {
+    margin-top: 10px;
+  }
+}

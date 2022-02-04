@@ -1,10 +1,9 @@
+import Logo from "../Logo";
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer__flex">
-        <a className="header__link" href="/">
-          AppCo
-        </a>
+        <Logo />
         <div>
           <p className="footer_text">All rights reserved by ThemeTags</p>
         </div>
