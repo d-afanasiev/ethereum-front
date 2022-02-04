@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTable } from "react-table";
+import { getAllTransactions } from "../../service/serviceApi";
 
 export default function Table() {
   const data = useMemo(
@@ -60,6 +61,7 @@ export default function Table() {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
+  getAllTransactions();
   return (
     <div className="wrapper_table">
       <table {...getTableProps()} className="table">
