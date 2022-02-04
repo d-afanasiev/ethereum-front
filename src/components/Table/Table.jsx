@@ -1,103 +1,104 @@
-import { useMemo } from "react";
-import { useTable } from "react-table";
+import { useEffect, useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import { getAllTransactions } from "../../service/serviceApi";
+import Pagination from "../Pagination";
 
-export default function Table() {
-  const data = useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-      },
-      {
-        col1: "whatever",
-        col2: "you want",
-      },
-    ],
-    []
-  );
+export default function TransactionTable() {
+  const [dataTable, setDataTable] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(20);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Block number",
-        accessor: "blockNumber", // accessor is the "key" in the data
-      },
-      {
-        Header: "Transaction ID",
-        accessor: "transactionId",
-      },
-      {
-        Header: "Sender address",
-        accessor: "senderAddress",
-      },
-      {
-        Header: "Recipient's address",
-        accessor: "recipientAddress",
-      },
-      {
-        Header: "Block confirmations",
-        accessor: "blockConfirmations",
-      },
-      {
-        Header: "Date",
-        accessor: "date",
-      },
-      {
-        Header: "Value",
-        accessor: "value",
-      },
-      {
-        Header: "Transaction Fee",
-        accessor: "transactionFee",
-      },
-    ],
-    []
-  );
+  useEffect(() => {
+    getAllTransactions(currentPage).then((data) => {
+      setDataTable(data.docs);
+      setTotalItems(data.totalDocs);
+    });
+  }, [currentPage]);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
-  getAllTransactions();
+  const header = [
+    "Block number",
+    "Transaction ID",
+    "Sender address",
+    "Recipient's address",
+    "Block confirmations",
+    "Date",
+    "Value",
+    "Transaction Fee",
+  ];
+
   return (
-    <div className="wrapper_table">
-      <table {...getTableProps()} className="table">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()} className="table__title">
-                  {column.render("Header")}
-                </th>
+    <>
+      <TableContainer component={Paper} className="wrapper_table">
+        <Table
+          sx={{ minWidth: 650 }}
+          aria-label="simple table"
+          className="table"
+        >
+          <TableHead>
+            <TableRow>
+              {header.map((data) => (
+                <TableCell className="table__title">{data}</TableCell>
               ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: "10px",
-                      }}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {dataTable.map(
+              ({
+                _id,
+                blockNumber,
+                id,
+                sender,
+                recipient,
+                confirmayions,
+                date,
+                value,
+                fee,
+              }) => (
+                <TableRow
+                  key={_id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    className="table__column"
+                  >
+                    {blockNumber}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    <a href="https://etherscan.io/">{id}</a>
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {sender}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {recipient}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {confirmayions}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {date}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {value}
+                  </TableCell>
+                  <TableCell align="left" className="table__column">
+                    {fee}
+                  </TableCell>
+                </TableRow>
+              )
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Pagination totalItems={totalItems} setCurrentPage={setCurrentPage} />
+    </>
   );
 }

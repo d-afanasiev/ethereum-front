@@ -1,6 +1,5 @@
 import FormSearch from "../FormSearch";
-import Table from "../Table";
-import Pagination from "../Pagination";
+import TransactionTable from "../Table";
 
 export default function Filter() {
   return (
@@ -8,8 +7,7 @@ export default function Filter() {
       <div className="container">
         <section className="filter">
           <FormSearch />
-          <Table />
-          <Pagination />
+          <TransactionTable />
         </section>
       </div>
     </main>

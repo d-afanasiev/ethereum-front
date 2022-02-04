@@ -39,9 +39,7 @@ body {
     padding: 0;
   }
 
-  @media screen and (min-width: 1024px) {
-    width: 1024px;
-    padding-left: 10px;
-    padding-right: 10px;
+  @media screen and (min-width: 1280px) {
+    width: 1260px;
   }
 }

@@ -1,10 +1,31 @@
-.table__title {
-  height: 48px;
-  font-size: 16px;
-  line-height: 1.25;
-  background-color: var(--header-bg-color);
-  color: var(--main-color);
-  padding: 12px 4px;
+.table {
+  & .table__title {
+    height: 48px;
+    font-size: 16px;
+    line-height: 1.25;
+    background-color: var(--header-bg-color);
+    color: var(--main-color);
+    padding: 12px 4px;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  & .table__column {
+    max-width: 135px;
+    padding: 6px 12px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  & a {
+    color: var(--header-bg-color);
+  }
 }
 
 .table tr:nth-child(2n) {
