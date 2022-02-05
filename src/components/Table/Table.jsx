@@ -6,10 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { getAllTransactions } from "../../service/serviceApi";
+import {
+  getAllTransactions,
+  getTransactionsBySearch,
+} from "../../service/serviceApi";
 import Pagination from "../Pagination";
 
-export default function TransactionTable() {
+export default function TransactionTable({ dataForm }) {
   const [dataTable, setDataTable] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(20);
@@ -20,6 +23,13 @@ export default function TransactionTable() {
       setTotalItems(data.totalDocs);
     });
   }, [currentPage]);
+
+  useEffect(() => {
+    getTransactionsBySearch(dataForm, currentPage).then((data) => {
+      setDataTable(data.docs);
+      setTotalItems(data.totalDocs);
+    });
+  }, [dataForm]);
 
   const header = [
     "Block number",
