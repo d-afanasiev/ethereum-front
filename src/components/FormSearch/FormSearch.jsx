@@ -42,7 +42,7 @@ export default function FormSearch({ changeDataForm }) {
           </option>
           <option value="recipient">Adress Rec</option>
           <option value="id">ID</option>
-          <option value="number">Number</option>
+          <option value="blockNumber">Number</option>
         </select>
       </div>
       <button type="submit" className="search__button">

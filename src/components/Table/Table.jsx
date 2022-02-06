@@ -18,13 +18,21 @@ export default function TransactionTable({ dataForm }) {
   const [totalItems, setTotalItems] = useState(20);
 
   useEffect(() => {
-    getAllTransactions(currentPage).then((data) => {
-      setDataTable(data.docs);
-      setTotalItems(data.totalDocs);
-    });
+    if (Object.keys(dataForm).length === 0) {
+      getAllTransactions(currentPage).then((data) => {
+        setDataTable(data.docs);
+        setTotalItems(data.totalDocs);
+      });
+    } else {
+      getTransactionsBySearch(dataForm, currentPage).then((data) => {
+        setDataTable(data.docs);
+        setTotalItems(data.totalDocs);
+      });
+    }
   }, [currentPage]);
 
   useEffect(() => {
+    setCurrentPage(1);
     getTransactionsBySearch(dataForm, currentPage).then((data) => {
       setDataTable(data.docs);
       setTotalItems(data.totalDocs);
@@ -108,7 +116,12 @@ export default function TransactionTable({ dataForm }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination totalItems={totalItems} setCurrentPage={setCurrentPage} />
+      <Pagination
+        dataForm={dataForm}
+        currentPage={currentPage}
+        totalItems={totalItems}
+        setCurrentPage={setCurrentPage}
+      />
     </>
   );
 }
