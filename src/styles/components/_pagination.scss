@@ -20,3 +20,51 @@
   display: flex;
   justify-content: center;
 }
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  & .disabled {
+    opacity: 0.4;
+  }
+
+  & .active {
+    background-color: var(--header-bg-color);
+    & a {
+      color: var(--main-color);
+    }
+  }
+
+  & li {
+    width: 48px;
+    height: 48px;
+    border: 2px solid #f1f1f1;
+    border-radius: 8px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+
+    &:last-child,
+    &:first-child {
+      display: none;
+    }
+    & a {
+      width: inherit;
+      height: inherit;
+      text-decoration: none;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 1.25;
+      color: var(--select-color-text);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

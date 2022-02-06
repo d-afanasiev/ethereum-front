@@ -10,7 +10,7 @@ import {
   getAllTransactions,
   getTransactionsBySearch,
 } from "../../service/serviceApi";
-import Pagination from "../Pagination";
+import Pag from "../Pagination";
 
 export default function TransactionTable({ dataForm }) {
   const [dataTable, setDataTable] = useState([]);
@@ -116,7 +116,7 @@ export default function TransactionTable({ dataForm }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination
+      <Pag
         dataForm={dataForm}
         currentPage={currentPage}
         totalItems={totalItems}

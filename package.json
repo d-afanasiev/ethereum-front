@@ -12,6 +12,7 @@
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-js-pagination": "^3.0.3",
     "react-paginate": "^8.1.0",
     "react-pagination-bar": "^1.0.8",
     "react-scripts": "5.0.0",
