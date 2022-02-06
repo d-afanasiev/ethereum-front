@@ -40,9 +40,7 @@ export default function FormSearch({ changeDataForm }) {
           onChange={selectChange}
           value={type}
         >
-          <option value="sender" selected>
-            Adress Sen
-          </option>
+          <option value="sender">Adress Sen</option>
           <option value="recipient">Adress Rec</option>
           <option value="id">ID</option>
           <option value="blockNumber">Number</option>

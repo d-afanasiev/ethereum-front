@@ -48,7 +48,9 @@ export default function TransactionTable({ dataForm }) {
           <TableHead>
             <TableRow>
               {HEADER.map((data) => (
-                <TableCell className="table__title">{data}</TableCell>
+                <TableCell key={data} className="table__title">
+                  {data}
+                </TableCell>
               ))}
             </TableRow>
           </TableHead>
