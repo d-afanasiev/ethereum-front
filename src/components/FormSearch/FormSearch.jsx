@@ -15,6 +15,9 @@ export default function FormSearch({ changeDataForm }) {
 
   const sentDataSearch = (e) => {
     e.preventDefault();
+    if (!search.trim()) {
+      return;
+    }
     changeDataForm({ search, type });
   };
 
