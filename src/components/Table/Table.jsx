@@ -12,6 +12,7 @@ import {
 } from "../../service/serviceApi";
 import Pag from "../Pagination";
 import { HEADER } from "../../constants/table";
+import EllipsisText from "react-ellipsis-text";
 
 export default function TransactionTable({ dataForm }) {
   const [dataTable, setDataTable] = useState([]);
@@ -82,10 +83,10 @@ export default function TransactionTable({ dataForm }) {
                     <a href="https://etherscan.io/">{id}</a>
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    {sender}
+                    <EllipsisText text={sender} length={"20"} />
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    {recipient}
+                    <EllipsisText text={recipient} length={"20"} />
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     {confirmayions}
@@ -94,7 +95,7 @@ export default function TransactionTable({ dataForm }) {
                     {date}
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    {value}
+                    <EllipsisText text={value} length={"16"} tooltip={value} />
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     {fee}
