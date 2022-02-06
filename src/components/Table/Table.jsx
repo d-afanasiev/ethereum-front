@@ -11,11 +11,13 @@ import {
   getTransactionsBySearch,
 } from "../../service/serviceApi";
 import Pag from "../Pagination";
+import { HEADER } from "../../constants/table";
 
 export default function TransactionTable({ dataForm }) {
   const [dataTable, setDataTable] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(20);
+  const [currentDataForm, setcurrentDataForm] = useState(null);
 
   useEffect(() => {
     if (Object.keys(dataForm).length === 0) {
@@ -24,31 +26,16 @@ export default function TransactionTable({ dataForm }) {
         setTotalItems(data.totalDocs);
       });
     } else {
+      if (dataForm !== currentDataForm) {
+        setCurrentPage(1);
+      }
+      setcurrentDataForm(dataForm);
       getTransactionsBySearch(dataForm, currentPage).then((data) => {
         setDataTable(data.docs);
         setTotalItems(data.totalDocs);
       });
     }
-  }, [currentPage]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-    getTransactionsBySearch(dataForm, currentPage).then((data) => {
-      setDataTable(data.docs);
-      setTotalItems(data.totalDocs);
-    });
-  }, [dataForm]);
-
-  const header = [
-    "Block number",
-    "Transaction ID",
-    "Sender address",
-    "Recipient's address",
-    "Block confirmations",
-    "Date",
-    "Value",
-    "Transaction Fee",
-  ];
+  }, [currentDataForm, currentPage, dataForm]);
 
   return (
     <>
@@ -60,7 +47,7 @@ export default function TransactionTable({ dataForm }) {
         >
           <TableHead>
             <TableRow>
-              {header.map((data) => (
+              {HEADER.map((data) => (
                 <TableCell className="table__title">{data}</TableCell>
               ))}
             </TableRow>
