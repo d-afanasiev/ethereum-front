@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { ReactComponent as Stroke } from "../../images/stroke.svg";
 
 export default function FormSearch({ changeDataForm }) {
@@ -15,7 +16,12 @@ export default function FormSearch({ changeDataForm }) {
 
   const sentDataSearch = (e) => {
     e.preventDefault();
+    console.log(Number(search.trim()));
     if (!search.trim()) {
+      Notify.info("Введите в форму данные для поиска.");
+      return;
+    } else if (isNaN(Number(search.trim())) && type === "blockNumber") {
+      Notify.info("Введите число для отображения поиска.");
       return;
     }
     changeDataForm({ search, type });
