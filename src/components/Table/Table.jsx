@@ -80,7 +80,9 @@ export default function TransactionTable({ dataForm }) {
                     {blockNumber}
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    <a href="https://etherscan.io/">{id}</a>
+                    <a href="https://etherscan.io/">
+                      <EllipsisText text={id} length={"18"} />
+                    </a>
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     <EllipsisText text={sender} length={"20"} />
