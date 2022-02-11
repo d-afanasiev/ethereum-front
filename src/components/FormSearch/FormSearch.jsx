@@ -16,7 +16,7 @@ export default function FormSearch({ changeDataForm }) {
 
   const sentDataSearch = (e) => {
     e.preventDefault();
-    console.log(Number(search.trim()));
+
     if (!search.trim()) {
       Notify.info("Введите в форму данные для поиска.");
       return;
