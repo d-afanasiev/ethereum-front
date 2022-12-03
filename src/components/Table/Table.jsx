@@ -81,14 +81,14 @@ export default function TransactionTable({ dataForm }) {
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     <a href="https://etherscan.io/">
-                      <EllipsisText text={id} length={"18"} />
+                      <EllipsisText text={`${id}`} length={"18"} />
                     </a>
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    <EllipsisText text={sender} length={"20"} />
+                    <EllipsisText text={`${sender}`} length={"20"} />
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    <EllipsisText text={recipient} length={"20"} />
+                    <EllipsisText text={`${recipient}`} length={"20"} />
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     {confirmayions}
@@ -97,7 +97,11 @@ export default function TransactionTable({ dataForm }) {
                     {date}
                   </TableCell>
                   <TableCell align="left" className="table__column">
-                    <EllipsisText text={value} length={"16"} tooltip={value} />
+                    <EllipsisText
+                      text={`${value}`}
+                      length={"16"}
+                      tooltip={value}
+                    />
                   </TableCell>
                   <TableCell align="left" className="table__column">
                     {fee}
